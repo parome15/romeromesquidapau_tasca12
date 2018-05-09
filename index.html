@@ -1,49 +1,51 @@
 <!DOCTYPE html>
+<!--DECLARACIÓN DE APP -->
 <html ng-app="alumnes">
 <head>
-    <title> Afegir i eliminar alumnes a una taula amb AngularJS </title>
+    <title> Tabla alumnes AngularJS </title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
 </head>
-<!-- Controlador -->
-<body ng-controller="AlumnoController">
+<!-- DECLARACIÓN DE CONTROLADOR -->
+<body ng-controller="alumneController">
 
     <div class="container">
         
-        <h1>Tabla d'alumnes</h1>
+        <h1>Tabla de alumnes</h1>
         <div>
-            <h2> Insertar un alumne </h2>
+            <h2> Añadir un alumne </h2>
+            <!-- DIRECTIVA SUBMIT -->
             <form ng-submit="Insertar()">
                 <div class="form-group">
                     <label for="DNI">DNI</label>
-                    <!-- Els inputs que volem per al nostre insercio d'alumnes -->
+                    <!-- LOS INPUTS PRESENTAN EL MODELO -->
                     <input type="text" class="form-control" id="DNI" placeholder="DNI del alumne" ng-model="noualumne.dni" required>
                 </div>
                 <div class="form-group">
                     <label for="Nom"> Nom </label>
-                    <input type="text" class="form-control" id="Nombre" placeholder="Nom del alumne" ng-model="noualumne.nom" required>
+                    <input type="text" class="form-control" id="Nom" placeholder="Nom del alumne" ng-model="noualumne.Nom" required>
                 </div>
                 <div class="form-group">
-                    <label for="Cognom2">1er Cognom</label>
-                    <input type="text" class="form-control" id="Cognom1" placeholder="1º Cognom del alumne" ng-model="noualumne.cognom1" required>
+                    <label for="Cognom1">1er Cognom</label>
+                    <input type="text" class="form-control" id="Cognom1" placeholder="1er Cognom del alumne" ng-model="noualumne.Cognom1" required>
                 </div>
                 <div class="form-group">
                     <label for="Cognom2">2º Cognom</label>
-                    <input type="text" class="form-control" id="Apellido2" placeholder="2º Cognom del alumne" ng-model="noualumne.cognom2" required>
+                    <input type="text" class="form-control" id="Cognom2" placeholder="2º Cognom del alumne" ng-model="noualumne.Cognom2" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Correu electrónic</label>
-                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico del alumno" ng-model="noualumne.email" required>
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico del alumne" ng-model="noualumne.email" required>
                 </div>
                 <div class="form-group">
                     <label for="nota">Nota</label>
-                    <input type="number" class="form-control" id="nota" placeholder="Nota del alumno" min="0" max="10" step="0.5" ng-model="noualumne.nota" required>
+                    <input type="number" class="form-control" id="nota" placeholder="Nota del alumne" min="0" max="10" step="0.5" ng-model="noualumne.nota" required>
                 </div>
                 <button type="submit" class="btn btn-primary" ng-click="validarDni(noualumne.dni)">Insertar alumne</button>
             </form>
         </div>
         <div>
-            <!-- Aqui definim la taula on apareixeran les dades.-->
+            <!-- TABLA EN LA CUAL APARECERÁN LOS DATOS -->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -52,18 +54,19 @@
                         <th scope="col">Nom</th>
                         <th scope="col">1er Cognom</th>
                         <th scope="col">2º Cognom</th>
-                        <th scope="col">Correu electrónic</th>
+                        <th scope="col">Correo electrónico</th>
                         <th scope="col">Nota</th>
-                        <th scope="col">Acció</th>
+                        <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- DIRECTIVA REPEAT -->
                     <tr ng-repeat= "alumne in alumnes">
                         <td>{{$index+1}}</td>
                         <td>{{alumne.dni}}</td>
-                        <td>{{alumne.nom}}</td>
-                        <td>{{alumne.cognom1}}</td>
-                        <td>{{alumne.cognom2}} </td>
+                        <td>{{alumne.Nom}}</td>
+                        <td>{{alumne.Cognom1}}</td>
+                        <td>{{alumne.Cognom2}} </td>
                         <td>{{alumne.email}} </td>
                         <td>{{alumne.nota}} </td>
                         <td><button class="btn btn-danger" id="borrar" ng-click="eliminar($index)">Eliminar</button></td>
