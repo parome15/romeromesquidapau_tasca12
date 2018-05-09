@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--DECLARACIÓN DE APP -->
+<html ng-app="alumnos">
+<head>
+    <title> Tabla alumnos AngularJS </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<!-- DECLARACIÓN DE CONTROLADOR -->
+<body ng-controller="AlumnoController">
+
+    <div class="container">
+        
+        <h1>Tabla de alumnos</h1>
+        <div>
+            <h2> Añadir un alumno </h2>
+            <!-- DIRECTIVA SUBMIT -->
+            <form ng-submit="Insertar()">
+                <div class="form-group">
+                    <label for="DNI">DNI</label>
+                    <!-- LOS INPUTS PRESENTAN EL MODELO -->
+                    <input type="text" class="form-control" id="DNI" placeholder="DNI del alumne" ng-model="noualumne.dni" required>
+                </div>
+                <div class="form-group">
+                    <label for="Nom"> Nom </label>
+                    <input type="text" class="form-control" id="Nombre" placeholder="Nom del alumne" ng-model="noualumne.nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="Cognom2">1er Cognom</label>
+                    <input type="text" class="form-control" id="Cognom1" placeholder="1º Cognom del alumne" ng-model="noualumne.cognom1" required>
+                </div>
+                <div class="form-group">
+                    <label for="Cognom2">2º Cognom</label>
+                    <input type="text" class="form-control" id="Apellido2" placeholder="2º Cognom del alumne" ng-model="noualumne.cognom2" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correu electrónic</label>
+                    <input type="email" class="form-control" id="email" placeholder="Correo electrónico del alumno" ng-model="noualumne.email" required>
+                </div>
+                <div class="form-group">
+                    <label for="nota">Nota</label>
+                    <input type="number" class="form-control" id="nota" placeholder="Nota del alumno" min="0" max="10" step="0.5" ng-model="noualumne.nota" required>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="validarDni(noualumne.dni)">Insertar alumne</button>
+            </form>
+        </div>
+        <div>
+            <!-- TABLA EN LA CUAL APARECERÁN LOS DATOS -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col"> # </th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">1er Cognom</th>
+                        <th scope="col">2º Cognom</th>
+                        <th scope="col">Correu electrónic</th>
+                        <th scope="col">Nota</th>
+                        <th scope="col">Acció</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- DIRECTIVA REPEAT -->
+                    <tr ng-repeat= "alumno in alumnos">
+                        <td>{{$index+1}}</td>
+                        <td>{{alumno.dni}}</td>
+                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.apellido1}}</td>
+                        <td>{{alumno.apellido2}} </td>
+                        <td>{{alumno.email}} </td>
+                        <td>{{alumno.nota}} </td>
+                        <td><button class="btn btn-danger" id="borrar" ng-click="eliminar($index)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>   
+        </div>
+    </div>
+    <!-- AQUI SE INSERTAN TODOS LOS SCRIPTS EXTERNOS Y LA LIBRERIA DE ANGULAR -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="dni.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
