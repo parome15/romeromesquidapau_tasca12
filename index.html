@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<!--DECLARACIÓN DE APP -->
 <html ng-app="alumnos">
 <head>
-    <title> Tabla alumnos AngularJS </title>
+    <title> Afegir i eliminar alumnes a una taula amb AngularJS </title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<!-- DECLARACIÓN DE CONTROLADOR -->
+<!-- Controlador -->
 <body ng-controller="AlumnoController">
 
     <div class="container">
         
-        <h1>Tabla de alumnos</h1>
+        <h1>Tabla d'alumnes</h1>
         <div>
-            <h2> Añadir un alumno </h2>
-            <!-- DIRECTIVA SUBMIT -->
+            <h2> Insertar un alumne </h2>
             <form ng-submit="Insertar()">
                 <div class="form-group">
                     <label for="DNI">DNI</label>
-                    <!-- LOS INPUTS PRESENTAN EL MODELO -->
+                    <!-- Els inputs que volem per al nostre insercio d'alumnes -->
                     <input type="text" class="form-control" id="DNI" placeholder="DNI del alumne" ng-model="noualumne.dni" required>
                 </div>
                 <div class="form-group">
@@ -45,7 +43,7 @@
             </form>
         </div>
         <div>
-            <!-- TABLA EN LA CUAL APARECERÁN LOS DATOS -->
+            <!-- Aqui definim la taula on apareixeran les dades.-->
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -60,15 +58,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- DIRECTIVA REPEAT -->
                     <tr ng-repeat= "alumno in alumnos">
                         <td>{{$index+1}}</td>
-                        <td>{{alumno.dni}}</td>
-                        <td>{{alumno.nombre}}</td>
-                        <td>{{alumno.apellido1}}</td>
-                        <td>{{alumno.apellido2}} </td>
-                        <td>{{alumno.email}} </td>
-                        <td>{{alumno.nota}} </td>
+                        <td>{{alumne.dni}}</td>
+                        <td>{{alumne.nombre}}</td>
+                        <td>{{alumne.apellido1}}</td>
+                        <td>{{alumne.apellido2}} </td>
+                        <td>{{alumne.email}} </td>
+                        <td>{{alumne.nota}} </td>
                         <td><button class="btn btn-danger" id="borrar" ng-click="eliminar($index)">Eliminar</button></td>
                     </tr>
                 </tbody>
