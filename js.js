@@ -30,11 +30,11 @@ function ($scope) {
         //Validación DNI
         if (validarDni($scope.noualumne.dni)){
             //Insertar datos en la tabla
-            $scope.alumnos.push({
+            $scope.alumnes.push({
                 dni: $scope.noualumne.dni,
-                nombre: $scope.noualumne.nombre, 
-                apellido1: $scope.noualumne.apellido1, 
-                apellido2: $scope.noualumne.apellido2, 
+                nombre: $scope.noualumne.nom, 
+                apellido1: $scope.noualumne.cognom1, 
+                apellido2: $scope.noualumne.cognom2, 
                 email: $scope.noualumne.email, 
                 nota: $scope.noualumne.nota
             });
